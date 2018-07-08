@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+spring:
+  data:
+    mongodb:
+      uri: localhost:27017
+  mail:
+      host: localhost
+      port: 587
+      username: test
+      password: test
+      properties:
+        mail:
+          smtp:
+            connectiontimeout: 5000
+            timeout: 3000
+            writetimeout: 5000
+            auth: true
+            #send partial means that even if you have sent a list of email addresses where some are invalid, the mail will still be sent to the valid email addresses.
+            sendpartial: true
+            starttls:
+              enable: true
+
+emailConfig:
+  active: true
+  fromAddress: notification@test.com
+  retryCount: 2
+  incoming:
+    mail:
+      host: localhost
+      userName: notification
+      password: test
+
+smsConfig:
+  active: true
+  credentials:
+    userName: dinukadev
+    apiKey: test
+
+

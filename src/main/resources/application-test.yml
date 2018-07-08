@@ -1,0 +1,15 @@
+spring:
+  data:
+    mongodb:
+      uri: localhost:27017
+
+emailConfig:
+  active: true
+  fromAddress: noreply.dev@test.com
+  retryCount: 2
+
+smsConfig:
+  active: true
+  credentials:
+    userName: dinukadev
+    apiKey: test

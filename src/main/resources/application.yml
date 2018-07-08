@@ -1,0 +1,78 @@
+server:
+  name: ms-notification
+  port: 80
+
+logging:
+  level:
+    org:
+      springframework:
+            WEB: INFO
+
+spring:
+    profiles:
+      active: dev
+    data:
+      mongodb:
+        uri: localhost:27017
+
+
+clientConfig:
+   ms_module: callbackrequired=true
+
+emailConfig:
+  active: false
+  fromAddress: noreply.dev@test.com
+  #this property will define the sender name you will see when e-mails are sent out from ms-notification
+  fromName: Test
+  retryCount: 2
+  incoming:
+    mail:
+      host: host
+      userName: dummy
+      password: dummy
+
+smsConfig:
+  active: false
+  send:
+    url: https://rest.clicksend.com/v3/sms/send
+  receive:
+    url: https://rest.clicksend.com/v3/sms/inbound
+    notificationProducerTopic: incomingSMSNotification
+  markRead:
+    url: https://rest.clicksend.com/v3/sms/inbound-read
+  dedicatedNumber: +614334343434
+
+notification:
+  responseTopic: incomingNotification
+
+endpoints:
+  health:
+    enabled: true
+    id: health
+    sensitive: false
+  metrics:
+    enabled: true
+    id: metrics
+    sensitive: false
+  trace:
+    enabled: false
+    sensitive: false
+
+management:
+  port: 8081
+  trace:
+    include: >
+      REQUEST_HEADERS,RESPONSE_HEADERS,ERRORS,PATH_INFO,
+      PATH_TRANSLATED,CONTEXT_PATH,USER_PRINCIPAL,PARAMETERS,QUERY_STRING,AUTH_TYPE,
+      REMOTE_ADDRESS,SESSION_ID,REMOTE_USER
+    enabled: true
+
+
+
+quartz:
+    jobStore:
+      environment-config: quartz/environment-config.yaml
+      #The database name to be used to create the quartz scheduler specific collections.
+      dbName: ms-notification-quartz-jobs
+
+

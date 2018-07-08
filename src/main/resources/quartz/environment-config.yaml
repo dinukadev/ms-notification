@@ -1,0 +1,25 @@
+environments:
+  - name: uat
+    config: application-uat.yml
+    ssl: true
+  - name: prod
+    config: application-prod.yml
+    ssl: true
+  - name: sanford-dev
+    config: application-sanford-dev.yml
+    ssl: true
+  - name: sanford-staging
+    config: application-sanford-staging.yml
+    ssl: true
+  - name: sanford-prod
+    config: application-sanford-prod.yml
+    ssl: true
+  - name: dev
+    config: application-dev.yml
+    ssl: false
+  - name: test
+    config: application-test.yml
+    ssl: false
+  - name: sandbox
+    config: application-sandbox.yml
+    ssl: false
